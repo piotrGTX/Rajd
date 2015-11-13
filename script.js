@@ -196,7 +196,7 @@ var GameView = function(){
     for(var x in cards)
       if(cards[x]==null){
         $("#board .cards li:eq("+x+")").text("");
-        $("#board .cards li:eq("+x+")").attr({"value": null});
+        $("#board .cards li:eq("+x+")").attr({"value": null,"the_biggest": false});
       }
       else{
         $("#board .cards li:eq("+x+")").text(cards[x].value);
@@ -278,8 +278,6 @@ var GameView = function(){
   game_view.show_count_players();
   game_view.show_current_player("-");
 };
-
-
 
 $(document).ready(function(){
   var game_view = new GameView();
