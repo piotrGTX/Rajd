@@ -148,10 +148,11 @@ var GameView = function(){
   this.show_count_players = function(){
     $("#count_players").text(count_players);
   };
-  this.show_current_player = function(val){
-    $("#current_player").text(val);
+  this.show_current_player = function(){
+    $("#current_player").text(this.game.current_player);
   };
-  this.craete_players_statistics = function(players){
+  this.craete_players_statistics = function(){
+    var players = this.game.players;
     $("#statistics table td").remove();
     for(var x in players){
       $("#statistics table tr.name th").after("<td>"+players[x].name+"</td>");
@@ -159,7 +160,8 @@ var GameView = function(){
       $("#statistics table tr.count_cards th").after("<td>"+players[x].count_cards)
     }
   };
-  this.update_players_statistics = function(players){
+  this.update_players_statistics = function(){
+    var players = this.game.players;
     for(var x in players){
       $("#statistics table tr.points td:eq("+(players.length-x-1)+")").text(players[x].points);
       $("#statistics table tr.count_cards td:eq("+(players.length-x-1)+")").text(players[x].count_cards);
@@ -174,8 +176,8 @@ var GameView = function(){
     else
       $("#can_move").addClass("green");
   };
-  this.show_cards = function(cards){
-    // alert("Karty: "+cards);
+  this.show_cards = function(){
+    var cards = this.game.players[0].cards;
     $("#my_area .cards").empty();
     var pom = 0;
     for(var x in cards){
@@ -192,7 +194,8 @@ var GameView = function(){
     }
     $("#my_area .cards li").draggable({ revert: true });
   };
-  this.show_stack = function(cards){
+  this.show_stack = function(){
+    var cards = this.game.stack;
     for(var x in cards)
       if(cards[x]==null){
         $("#board .cards li:eq("+x+")").text("");
@@ -209,16 +212,16 @@ var GameView = function(){
   };
 
   this.create_all = function(){
-    this.show_current_player(this.game.current_player);
-    this.craete_players_statistics(this.game.players);
-    this.show_stack(this.game.stack);
-    this.show_cards(this.game.player_cards);
+    this.show_current_player();
+    this.craete_players_statistics();
+    this.show_stack();
+    this.show_cards();
     this.can_move_control_lamp();
   };
   this.update_all = function(){
-    this.show_current_player(this.game.current_player);
-    this.update_players_statistics(this.game.players);
-    this.show_stack(this.game.stack);
+    this.show_current_player();
+    this.update_players_statistics();
+    this.show_stack();
     this.can_move_control_lamp();
   };
 
@@ -276,7 +279,6 @@ var GameView = function(){
     }
   });
   game_view.show_count_players();
-  game_view.show_current_player("-");
 };
 
 $(document).ready(function(){
