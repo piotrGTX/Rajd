@@ -1,45 +1,49 @@
 @bg_color: #087830;
 
 body{
-  font-family: "Arial Black", sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
   font-size: 22px;
   background-color: @bg_color;
   color: #FFF;
+}
+input[type="submit"], button{
+  &{
+    font: inherit;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: inherit;
+    background-color: gray;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  &:hover{
+    color: gold;
+  }
+  &:active{
+    color: gold;
+    background-color: darken(gray,10%);
+  }
 }
 #container{
   width: 1130px;
   padding: 15px;
   margin: 0 auto;
 }
-#top, #statistics {
-  padding: 10px 50px;
-}
 #board, #my_area {
   padding: 30px 20px; 
 }
 #top, #statistics{
+
+  padding: 10px 50px;
   background-color: darken(@bg_color, 8%);
 
+  h1 { text-align: center; }
+
   button{
-    &{
-      vertical-align: top;
-      display: inline-block;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: inherit;
-      background-color: gray;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    &:hover{
-      color: gold;
-    }
-    &:active{
-      color: gold;
-      background-color: darken(gray,10%);
-    }
     &[disabled]{
       background-color: black;
     }

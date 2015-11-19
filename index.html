@@ -10,48 +10,42 @@
   <script type="text/javascript" src="less.min.js"></script>
   <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="jquery-ui.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript">
+  </script>
 
   <title> Rajd do Niepodległości </title>
 </head>
 <body>
 
   <div id="container">
-    <div id="top">
-      <button id="game_start"> Nowa Gra </button>
-      <button id="add_player"> + </button>
-      <button id="remove_player"> - </button>
-      <span class="info_area"> Ilośc Graczy: <span id="count_players"></span></span>
-      <span class="info_area"> Ruch Gracza:  <span id="current_player"></span></span>
-    </div>
-    <div id="board">
-      <ul class="cards">
-        <li sign="0"></li>
-        <li sign="1"></li>
-        <li sign="2"></li>
-        <li sign="3"></li>
-      </ul>
-    </div>
-    <div id="statistics">
-      <button id="accept"> Akceptuj </button>
-      <button id="can_move"></button>
-      <table>
-        <tr class="name">
-          <th> Gracz </th>
-        </tr>
-        <tr class="points">
-          <th> Punkty </th>
-        </tr>
-        <tr class="count_cards">
-          <th> Ilośc Kart </th>
-        </tr>
-      </table>
-    </div>
-    <div id="my_area">
-      <ul class="cards">
-      </ul>
-    </div>
+      <div id="top">
+        <h1> Rajd do Niepodległości </h1>
+      </div>
+      <div id="board">
+        <form action="gra.php" method="post">
+          <input type="submit" value="START" />
+          <p>
+            <h1> Opcje Podstawowe </h1>
+            <input type="number" name="count_of_players" min="2" max="13" value="2" />
+            <label for="count_of_players"> Ilośc Graczy </label>
+            <br />
+            <input type="number" name="count_of_games" min="1" max="99" value="1" />
+            <label for="count_of_players"> Ilość Rozgrywek </label>
+            <br />
+          </p>
+          <p>
+            <h1> Opcje Dodatkowe </h1>
+            <input type="number" name="count_of_stack" min="1" max="2" value="1" />
+            <label for="count_of_stack"> Ilość Tali </label>
+            <br />
+            <input type="number" name="count_of_colors_in_stack" min="1" max="6" value="4" />
+            <label for="count_of_colors_in_stack"> Ilość Kolorów w Tali </label>
+            <br />
+            <input type="number" name="count_of_values_in_color" min="1" max="99" value="13" />
+            <label for="count_of_values_in_color"> Ilość Kart danego koloru w Tali </label>
+          </p>
+        </form>
+      </div>
   </div>
 
 </body>
-</html>
